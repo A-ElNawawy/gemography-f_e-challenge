@@ -6,6 +6,22 @@ function getDays(date1){
   return diffDays;
 }
 
+async function getData() {
+  let result = await fetch('https://api.github.com/search/repositories?q=created:>2020-12-20&sort=stars&order=desc')
+  .then(response => response.json());
+  console.log(typeof result);
+  console.log(result);
+  return result;
+}
+
+//async function getText(file) {
+//  let myObject = await fetch(file);
+//  let myText = await myObject.text();
+//  myDisplay(myText);
+//}
+
+
 export {
   getDays,
+  getData
 }
