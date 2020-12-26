@@ -2,13 +2,13 @@ import React from 'react';
 import demoData from '../demoData/data';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
-import { getDays, getData } from "./../functions/functions";
+import Loading from '../components/Loading';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      data: [<Loading>loading...</Loading>]
     };
   }
 
@@ -48,7 +48,9 @@ class App extends React.Component {
         //  ></CardSidePic>
         //);
       }
-    })
+    }else{
+      list = this.state.data
+    }
     return (
       <div className="App">
         <Container>
