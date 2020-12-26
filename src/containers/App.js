@@ -19,34 +19,25 @@ class App extends React.Component {
         this.setState({
           list: new Date()
         });
-        this.setState((state, props) => ({
-          list: state.list.push(
-            <CardSidePic
-              key={repo.id}
-              img={repo.owner.avatar_url}
-              alt="Avatar"
-              repoName={repo.name}
-              description={repo.description}
-              starsNo={repo.stargazers_count}
-              issuesNo={repo.open_issues_count}
-              ownerName={repo.owner.login}
-              timeInterval={getDays(repo.created_at)}
-            ></CardSidePic>
-          )
-        }));
-        //list.push(
-        //  <CardSidePic
-        //    key={repo.id}
-        //    img={repo.owner.avatar_url}
-        //    alt="Avatar"
-        //    repoName={repo.name}
-        //    description={repo.description}
-        //    starsNo={repo.stargazers_count}
-        //    issuesNo={repo.open_issues_count}
-        //    ownerName={repo.owner.login}
-        //    timeInterval={getDays(repo.created_at)}
-        //  ></CardSidePic>
-        //);
+  render(){
+    let list = [];
+    let items = this.state.data.items? this.state.data.items : null;
+    let message = this.state.data.message? this.state.data.message : null;
+    if (items){
+      for(let repo of items){
+        list.push(
+          <CardSidePic
+            key={repo.id}
+            img={repo.owner.avatar_url}
+            alt="Avatar"
+            repoName={repo.name}
+            description={repo.description}
+            starsNo={repo.stargazers_count}
+            issuesNo={repo.open_issues_count}
+            ownerName={repo.owner.login}
+            timeInterval={getDays(repo.created_at)}
+          ></CardSidePic>
+        );
       }
     }else{
       list = this.state.data
@@ -54,7 +45,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Container>
-          {this.state.list}
+          {
+            list
+          }
         </Container>
       </div>
     )
