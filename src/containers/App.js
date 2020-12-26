@@ -12,13 +12,23 @@ class App extends React.Component {
     };
   }
 
-  render(){
-    getData()
-    .then( function(data){
-      for(let repo of data.items){
-        this.setState({
-          list: new Date()
-        });
+  componentDidMount() {
+    let date = getDateOf(30);
+    let pageNo = 1;
+    let per_page = 100;
+    getData(
+      'https://api.github.com/search/repositories?q=created:>'+date
+      +'&page='+pageNo
+      +'&per_page='+per_page
+      +'&sort=stars&order=desc'
+    )
+    .then(response => {
+      this.setState({
+        data: response
+      });
+    });
+  }
+
   render(){
     let list = [];
     let items = this.state.data.items? this.state.data.items : null;
