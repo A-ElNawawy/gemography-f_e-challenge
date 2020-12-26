@@ -39,6 +39,8 @@ class App extends React.Component {
           ></CardSidePic>
         );
       }
+    }else if(message){
+      list = [message];
     }else{
       list = this.state.data
     }
