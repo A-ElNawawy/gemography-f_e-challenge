@@ -5,46 +5,43 @@ import styled from 'styled-components';
 
 const CardSidePic = styled.div`
   display: flex;
-  height: 115px;
   min-width: 400px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
   border: 1px solid #e1e1e1;
   border-radius: 5px;
   box-shadow: 0 2px 0 0 #c9c9c9;
   .img{
     height: 113px;
     width: 116px;
-    min-width: 116px;
     position: relative;
     img{
       height: 100%;
       width: 100%;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+      border-radius: 5px;
     }
     :after{
       content: "";
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+      border-radius: 5px;
       transition: all .3s ease-in-out;
       position: absolute;
       top: 0;
       left: 0;
-      background-color: #f00;
+      background-color: #000;
       opacity: 0;
       width: 100%;
       height: 100%;
     }
     :hover{
       :after{
-        opacity: .3;
+        opacity: .2;
       }
     }
   }
   .content{
     flex-basis: 100%;
-    padding: 10px 10px;
+    padding: 0 0 0 20px;
     h5{
       margin-bottom: 10px;
       text-transform: capitalize;
