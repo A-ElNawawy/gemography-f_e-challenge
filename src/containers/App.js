@@ -1,5 +1,4 @@
 import React from 'react';
-import demoData from '../demoData/data';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
 import Loading from '../components/Loading';
