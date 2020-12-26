@@ -3,6 +3,7 @@ import demoData from '../demoData/data';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
 import Loading from '../components/Loading';
+import { getDays, getData, getDateOf } from "../includes/functions";
 
 class App extends React.Component {
   constructor(props) {
