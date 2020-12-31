@@ -23,10 +23,29 @@ function GetFormattedDate(date) {
   return year + "-" + month + "-" + day;
 }
 
-async function getData(api) {
-  let result = await fetch(api)
-  .then(response => response.json());
-  return result;
+
+
+
+
+
+async function getData(me, date, pageNo, per_page) {
+  me.setState({loading: true});
+  let api = 'https://api.github.com/search/repositories?q=created:>'
+  +date
+  +'&page='+pageNo
+  +'&per_page='+per_page
+  +'&sort=stars&order=desc';
+  await fetch(api)
+  .then(response => response.json())
+  .then(response => {
+    me.setState(
+      {
+      data: response,
+      loading: false
+    });
+  });
+}
+
 }
 
 export {
