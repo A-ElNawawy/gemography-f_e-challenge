@@ -2,7 +2,13 @@ import React from 'react';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
 import Loading from '../components/Loading';
+import {
+  getDays,
+   getData,
+   getDateOf,
    loadMore,
+   addString
+  } from "../includes/functions";
 
 class App extends React.Component {
   constructor(props) {
@@ -84,6 +90,11 @@ class App extends React.Component {
                     }
                   }
                 >Load more</button>
+                <button
+                
+                >Add String to Array</button>
+              </div>
+          }
         </Container>
       </div>
     )
