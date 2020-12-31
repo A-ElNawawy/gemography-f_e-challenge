@@ -8,25 +8,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [<Loading>loading...</Loading>]
+      date: getDateOf(30),
+      pageNo: 1,
+      per_page: 10
     };
   }
 
   componentDidMount() {
-    let date = getDateOf(30);
-    let pageNo = 1;
-    let per_page = 100;
     getData(
-      'https://api.github.com/search/repositories?q=created:>'+date
-      +'&page='+pageNo
-      +'&per_page='+per_page
-      +'&sort=stars&order=desc'
-    )
-    .then(response => {
-      this.setState({
-        data: response
-      });
-    });
+      this,
+      this.state.date,
+      this.pageNo,
+      this.state.per_page
+    );
   }
 
   render(){
