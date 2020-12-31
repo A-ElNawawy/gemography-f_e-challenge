@@ -16,6 +16,9 @@ function getDateOf(noOfDaysBack){
 function GetFormattedDate(date) {
   var month = date.getMonth() + 1;
   var day = date.getDate();
+  if(day < 10){
+    day = "0" + day;
+  }
   var year = date.getFullYear();
   return year + "-" + month + "-" + day;
 }
