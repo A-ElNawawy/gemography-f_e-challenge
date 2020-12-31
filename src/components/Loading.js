@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Loading = styled.h1`
+const Loading = styled.h2`
   text-align: center;
   margin-top: 200px;
   text-transform: capitalize;
