@@ -2,7 +2,7 @@ import React from 'react';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
 import Loading from '../components/Loading';
-import { getDays, getData, getDateOf } from "../includes/functions";
+   loadMore,
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class App extends React.Component {
       this.pageNo,
       this.state.per_page
     );
+    loadMore(this);
   }
 
   render(){
@@ -52,8 +53,17 @@ class App extends React.Component {
       <div className="App">
         <Container>
           {
-            list
-          }
+              <div>
+                {
+                  list
+                }
+                <button
+                  onClick={
+                    () => {
+                      loadMore(this);
+                    }
+                  }
+                >Load more</button>
         </Container>
       </div>
     )
