@@ -57,10 +57,22 @@ async function getData(me, date, pageNo, per_page) {
   });
 }
 
+function loadMore(me) {
+  me.setState((state) => ({
+    pageNo: state.pageNo + 1
+  }));
+  getData(
+    me,
+    me.state.date,
+    me.state.pageNo,
+    me.state.per_page
+  );
 }
 
 export {
   getDays,
   getData,
-  getDateOf
+  getDateOf,
+  loadMore,
+  addString
 }
