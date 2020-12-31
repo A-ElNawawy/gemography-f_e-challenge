@@ -8,6 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
+      data: {},
       date: getDateOf(30),
       pageNo: 1,
       per_page: 10
@@ -61,13 +63,16 @@ class App extends React.Component {
       }
     }else if(message){
       list = [message];
-    }else{
-      list = this.state.data
     }
+
+
     return (
-      <div className="App">
+      <div id="App" className="App">
         <Container>
           {
+            this.state.loading?
+              <Loading>loading.....</Loading>
+            :
               <div>
                 {
                   list
