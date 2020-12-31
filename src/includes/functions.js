@@ -25,6 +25,17 @@ function GetFormattedDate(date) {
 
 
 
+function addString(me) {
+  me.setState((state) => ({
+    //test: state.test.concat([3,4]),
+    //data: state.data.items.concat(obj)
+  }));
+}
+
+
+
+
+
 
 
 
