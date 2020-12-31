@@ -25,6 +25,21 @@ class App extends React.Component {
   }
 
   render(){
+    /*
+    let me = this;
+    //window.onscroll = function() {myFunction(me)};
+    function myFunction(me) {
+      let scrollRatio = document.documentElement.scrollTop / document.body.clientHeight;
+      if (scrollRatio > .8) {
+        document.getElementById("App").style.backgroundColor = "red";
+        //console.log(me);
+        //loadMore(me);
+      } else {
+        document.getElementById("App").style.backgroundColor = "white";
+      }
+    }
+*/
+    console.log(this.state.data);
     let list = [];
     let items = this.state.data.items? this.state.data.items : null;
     let message = this.state.data.message? this.state.data.message : null;
