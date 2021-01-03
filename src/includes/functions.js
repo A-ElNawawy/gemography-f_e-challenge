@@ -1,11 +1,21 @@
-function getDays(date1){
+/*
+** getDays Function to Calculate Difference ( in days ) Between Today And a Given Date [ Accepts Parameters]
+** Parameters:
+** date = Date Which We Want to Calculate
+*/
+function getDays(date){
   let today = new Date();
-  date1 = new Date(date1);
-  const diffTime = Math.abs(today - date1);
+  date = new Date(date);
+  const diffTime = Math.abs(today - date);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 }
 
+/*
+** getDateOf Function to Get The Date of a certain Day [ Accepts Parameters]
+** Parameters:
+** noOfDaysBack = Number of How many Days We Want to Go Back
+*/
 function getDateOf(noOfDaysBack){
   let date = new Date();
   date.setDate(date.getDate()-noOfDaysBack);
@@ -13,16 +23,27 @@ function getDateOf(noOfDaysBack){
   return(date);
 }
 
+/*
+** GetFormattedDate Function to Format a Given Date in This Format (yyyy-mm-dd) [ Accepts Parameters]
+** Parameters:
+** date = Date to Be Formatted
+*/
 function GetFormattedDate(date) {
   var month = date.getMonth() + 1;
   var day = date.getDate();
-  if(day < 10){
-    day = "0" + day;
-  }
+  if(day < 10){day = "0" + day;}
   var year = date.getFullYear();
   return year + "-" + month + "-" + day;
 }
 
+/*
+** getData Function to Fetch Data From github [ Accepts Parameters]
+** Parameters:
+** me = The ( This ) Keyword
+** date = Repos Will Be Searched in The Period Between It (date) And Today
+** pageNo = Page Number ( to Paginate Between Pages Came From github )
+** per_page = How Much Repos We Want Per Page (Max: 100)
+*/
 async function getData(me, date, pageNo, per_page) {
   me.setState({loading: true});
   let api = 'https://api.github.com/search/repositories?q=created:>'
