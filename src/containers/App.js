@@ -14,6 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      coding: true /*true*//*false*/,
       loading: false,
       data: {},
       items: [],
@@ -25,13 +26,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getData(
-      this,
-      this.state.date,
-      this.pageNo,
-      this.state.per_page
-    );
-    loadMore(this);
+    if(!this.state.coding){
+      getData(
+        this,
+        this.state.date,
+        this.pageNo,
+        this.state.per_page
+      );
+      loadMore(this);
+    }
   }
 
   render(){
