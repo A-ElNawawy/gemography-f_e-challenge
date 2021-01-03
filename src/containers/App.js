@@ -7,7 +7,7 @@ import {
    getData,
    getDateOf,
    loadMore,
-   addString
+   listenToScrolling
   } from "../includes/functions";
 
 class App extends React.Component {
@@ -38,21 +38,10 @@ class App extends React.Component {
   }
 
   render(){
-    /*
     let me = this;
-    //window.onscroll = function() {myFunction(me)};
-    function myFunction(me) {
-      let scrollRatio = document.documentElement.scrollTop / document.body.clientHeight;
-      if (scrollRatio > .8) {
-        document.getElementById("App").style.backgroundColor = "red";
-        //console.log(me);
-        //loadMore(me);
-      } else {
-        document.getElementById("App").style.backgroundColor = "white";
-      }
+    if(!this.state.loading){
+      window.addEventListener("scroll", () => {listenToScrolling(me)});
     }
-*/
-    console.log(this.state.data);
     let list = [];
     let items = this.state.data.items? this.state.data.items : null;
     let message = this.state.data.message? this.state.data.message : null;

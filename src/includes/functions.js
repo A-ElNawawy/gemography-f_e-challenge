@@ -76,10 +76,26 @@ function loadMore(me) {
   );
 }
 
+function listenToScrolling(me) {
+  let windowInnerHeight = window.innerHeight;
+  let bodyHeight = document.body.clientHeight;
+  let scrolled = document.documentElement.scrollTop;
+  if (scrolled > bodyHeight - windowInnerHeight) {
+    document.getElementById("App").style.backgroundColor = "red";
+    console.log(me.state.loading);
+    console.log("listenToScrolling is good: ", me);
+    me.setState({loading: true});
+    loadMore(me);
+  } else {
+    document.getElementById("App").style.backgroundColor = "white";
+  }
+}
+
+
 export {
   getDays,
   getData,
   getDateOf,
   loadMore,
-  addString
+  listenToScrolling
 }
