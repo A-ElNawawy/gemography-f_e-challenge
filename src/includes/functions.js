@@ -103,20 +103,15 @@ function dampEvent(me) {
   if(!me.lock){
     me.lock = true;
     setTimeout(function () {
-//===================================
+      //===================================
       let windowInnerHeight = window.innerHeight;
       let bodyHeight = document.body.clientHeight;
       let scrolled = document.documentElement.scrollTop;
       if (scrolled > bodyHeight - windowInnerHeight) {
-        //document.getElementById("App").style.backgroundColor = "red";
-        //console.log(me.state.loading);
-        //console.log("listenToScrolling is good: ", me);
         me.setState({loading: true});
         loadMore(me);
-      } else {
-        //document.getElementById("App").style.backgroundColor = "white";
       }
-//===================================
+      //===================================
       me.lock = false;
     }, 1000)
   }
