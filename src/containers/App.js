@@ -16,9 +16,11 @@ class App extends React.Component {
     this.state = {
       loading: false,
       data: {},
+      items: [],
+      message: "",
       date: getDateOf(30),
       pageNo: 1,
-      per_page: 10
+      per_page: 30
     };
   }
 
