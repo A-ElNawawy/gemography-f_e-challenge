@@ -75,30 +75,17 @@ class App extends React.Component {
     }else if(message){
       list = [message];
     }
-
-
     return (
       <div id="App" className="App">
         <Container>
           {
+            list
+          }
+          {
             this.state.loading?
               <Loading>loading.....</Loading>
             :
-              <div>
-                {
-                  list
-                }
-                <button
-                  onClick={
-                    () => {
-                      loadMore(this);
-                    }
-                  }
-                >Load more</button>
-                <button
-                
-                >Add String to Array</button>
-              </div>
+              null
           }
         </Container>
       </div>
