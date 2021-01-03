@@ -43,8 +43,8 @@ class App extends React.Component {
       window.addEventListener("scroll", () => {listenToScrolling(me)});
     }
     let list = [];
-    let items = this.state.data.items? this.state.data.items : null;
-    let message = this.state.data.message? this.state.data.message : null;
+    let items = this.state.items;
+    let message = this.state.message;
     if (items){
       for(let repo of items){
         list.push(
