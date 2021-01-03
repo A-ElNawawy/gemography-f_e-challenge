@@ -94,8 +94,9 @@ function listenToScrolling(me) {
   let bodyHeight = document.body.clientHeight;
   let scrolled = document.documentElement.scrollTop;
   if (scrolled > bodyHeight - windowInnerHeight) {
-    me.setState({loading: true});
-    loadMore(me);
+    if(me.state.message == "") {
+      dampEvent(me);
+    }
   }
 }
 
@@ -104,13 +105,7 @@ function dampEvent(me) {
     me.lock = true;
     setTimeout(function () {
       //===================================
-      let windowInnerHeight = window.innerHeight;
-      let bodyHeight = document.body.clientHeight;
-      let scrolled = document.documentElement.scrollTop;
-      if (scrolled > bodyHeight - windowInnerHeight) {
-        me.setState({loading: true});
-        loadMore(me);
-      }
+      loadMore(me);
       //===================================
       me.lock = false;
     }, 1000)
