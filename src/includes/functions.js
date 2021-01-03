@@ -25,16 +25,6 @@ function GetFormattedDate(date) {
 
 
 
-function addString(me) {
-  me.setState((state) => ({
-    //test: state.test.concat([3,4]),
-    //data: state.data.items.concat(obj)
-  }));
-}
-
-
-
-
 
 
 
@@ -48,12 +38,29 @@ async function getData(me, date, pageNo, per_page) {
   +'&sort=stars&order=desc';
   await fetch(api)
   .then(response => response.json())
-  .then(response => {
-    me.setState(
-      {
-      data: response,
-      loading: false
-    });
+  .then(data => {
+    if(data.items){
+      if(me.state.items.length === 0){
+        me.setState(
+          (state) =>({
+            items: state.items.concat(data.items)
+          })
+        );
+      }else{
+        if(me.state.items[0].full_name !== data.items[0].full_name){
+          me.setState(
+            (state) =>({
+              items: state.items.concat(data.items)
+            })
+          );
+        }
+      }
+    }else if(data.message) {
+      me.setState({message: data.message});
+    }else{
+      console.log(data);
+    }
+    me.setState({loading: false});
   });
 }
 
