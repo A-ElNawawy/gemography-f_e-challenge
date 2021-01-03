@@ -7,14 +7,15 @@ import {
    getData,
    getDateOf,
    loadMore,
-   listenToScrolling
+   listenToScrolling,
+   dampEvent
   } from "../includes/functions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coding: true /*true*//*false*/,
+      coding: false /*true*//*false*/,
       loading: false,
       data: {},
       items: [],
@@ -41,7 +42,7 @@ class App extends React.Component {
   render(){
     let me = this;
     if(!this.state.loading){
-      window.addEventListener("scroll", () => {listenToScrolling(me)});
+      window.addEventListener("scroll", () => {dampEvent(me)});
     }
     let list = [];
     let items = this.state.items;
@@ -62,8 +63,6 @@ class App extends React.Component {
           ></CardSidePic>
         );
       }
-    }else if(message){
-      list = [message];
     }
     return (
       <div id="App" className="App">
