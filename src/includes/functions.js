@@ -23,12 +23,6 @@ function GetFormattedDate(date) {
   return year + "-" + month + "-" + day;
 }
 
-
-
-
-
-
-
 async function getData(me, date, pageNo, per_page) {
   me.setState({loading: true});
   let api = 'https://api.github.com/search/repositories?q=created:>'
@@ -57,8 +51,6 @@ async function getData(me, date, pageNo, per_page) {
       }
     }else if(data.message) {
       me.setState({message: data.message});
-    }else{
-      console.log(data);
     }
     me.setState({loading: false});
   });
@@ -81,21 +73,39 @@ function listenToScrolling(me) {
   let bodyHeight = document.body.clientHeight;
   let scrolled = document.documentElement.scrollTop;
   if (scrolled > bodyHeight - windowInnerHeight) {
-    document.getElementById("App").style.backgroundColor = "red";
-    console.log(me.state.loading);
-    console.log("listenToScrolling is good: ", me);
     me.setState({loading: true});
     loadMore(me);
-  } else {
-    document.getElementById("App").style.backgroundColor = "white";
   }
 }
 
+function dampEvent(me) {
+  if(!me.lock){
+    me.lock = true;
+    setTimeout(function () {
+//===================================
+      let windowInnerHeight = window.innerHeight;
+      let bodyHeight = document.body.clientHeight;
+      let scrolled = document.documentElement.scrollTop;
+      if (scrolled > bodyHeight - windowInnerHeight) {
+        //document.getElementById("App").style.backgroundColor = "red";
+        //console.log(me.state.loading);
+        //console.log("listenToScrolling is good: ", me);
+        me.setState({loading: true});
+        loadMore(me);
+      } else {
+        //document.getElementById("App").style.backgroundColor = "white";
+      }
+//===================================
+      me.lock = false;
+    }, 1000)
+  }
+}
 
 export {
   getDays,
   getData,
   getDateOf,
   loadMore,
-  listenToScrolling
+  listenToScrolling,
+  dampEvent
 }

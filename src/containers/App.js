@@ -37,6 +37,7 @@ class App extends React.Component {
     }
   }
 
+  lock = false;
   render(){
     let me = this;
     if(!this.state.loading){
