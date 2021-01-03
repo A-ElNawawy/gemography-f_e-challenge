@@ -7,8 +7,7 @@ import {
    getData,
    getDateOf,
    loadMore,
-   listenToScrolling,
-   dampEvent
+   listenToScrolling
   } from "../includes/functions";
 
 class App extends React.Component {
@@ -22,7 +21,7 @@ class App extends React.Component {
       message: "",
       date: getDateOf(30),
       pageNo: 1,
-      per_page: 30
+      per_page: 5
     };
   }
 
@@ -42,7 +41,7 @@ class App extends React.Component {
   render(){
     let me = this;
     if(!this.state.loading){
-      window.addEventListener("scroll", () => {dampEvent(me)});
+      window.addEventListener("scroll", () => {listenToScrolling(me)});
     }
     let list = [];
     let items = this.state.items;
@@ -70,7 +69,7 @@ class App extends React.Component {
           {list}
           {
             message.includes("API rate limit exceeded for") ?
-              <Message>You Exceeded The API Rate Limit, Please Wait A While Then Refresh Your Page or Scroll Again</Message>
+              <Message>You Exceeded The API Rate Limit, Please Wait A While Then Refresh Your Page</Message>
             :
               null
           }
