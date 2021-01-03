@@ -1,7 +1,7 @@
 import React from 'react';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
-import Loading from '../components/Loading';
+import Message from '../components/Message';
 import {
   getDays,
    getData,
@@ -68,12 +68,16 @@ class App extends React.Component {
     return (
       <div id="App" className="App">
         <Container>
+          {list}
           {
-            list
+            message.includes("API rate limit exceeded for") ?
+              <Message>You Exceeded The API Rate Limit, Please Wait A While Then Refresh Your Page or Scroll Again</Message>
+            :
+              null
           }
           {
             this.state.loading?
-              <Loading>loading.....</Loading>
+              <Message>loading...</Message>
             :
               null
           }
