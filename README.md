@@ -25,23 +25,6 @@ npm start
 - [gh-pages](https://www.npmjs.com/package/gh-pages) => to publish a live project.
 - [create-react-app](https://create-react-app.dev/).
 
-
-## Project Structure:
-src |
-    |__index.js
-    |__index.css
-    |
-    |__components
-    |  |__CardSidePic
-    |  |__Container
-    |  |__Message
-    |
-    |__containers
-    |  |__App
-    |
-    |__includes
-       |__functions
-
 ##
 
 Functions used in App.js are located in includes dir, and each of them has its documentation
