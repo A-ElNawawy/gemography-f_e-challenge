@@ -34,7 +34,5 @@ it is easy to use, just like Sass.
 
 Any comments or improvements will be appreciated
 
-
-
-
-
+## Working Duration:
+This Project take a 44 Hrs.
