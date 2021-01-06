@@ -51,7 +51,7 @@ const CardSidePic = styled.div`
     .repo-info{
       display:flex;
       align-items: center;
-      @media (max-width: 600px){
+      @media (max-width: 700px){
         &{
           flex-wrap: wrap;
           p{
