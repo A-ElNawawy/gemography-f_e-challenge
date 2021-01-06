@@ -8,11 +8,14 @@ Reactjs
 ## How it run:
 1. Simply clone the repo on your machine.
 2. Open terminal and go to [gemography-f_e-challenge] Directory.
-3. Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
+3. Use the package manager [npm](https://www.npmjs.com/) - you must have nodejs on your machine - to install dependencies by pasting the following two lines in your terminal.
+
 ```bash
 npm install
 ```
+
 Then
+
 ```bash
 npm start
 ```
@@ -39,9 +42,16 @@ src |
     |__includes
        |__functions
 
+##
+
 Functions used in App.js are located in includes dir, and each of them has its documentation
 
 We prefer to use css-in-js using [styled-components](https://styled-components.com/) library
 it is easy to use, just like Sass.
 
 Any comments or improvements will be appreciated
+
+
+
+
+
