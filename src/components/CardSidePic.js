@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-// Props:
-// -----
-// 
 
 const CardSidePic = styled.div`
   display: flex;
@@ -51,27 +48,31 @@ const CardSidePic = styled.div`
     .description{
       margin-bottom: 10px
     }
-
-    .price{
-      /*font-family:;*/
-      font-size: 22px;
-      font-style: italic;
-    }
     .repo-info{
       display:flex;
       align-items: center;
-
+      @media (max-width: 600px){
+        &{
+          flex-wrap: wrap;
+          p{
+            width: 100%;
+            margin-top: 15px;
+          }
+        }
+      }
     }
   }
 `;
+
 const Badge = styled.span`
   margin-right: 5px;
   padding: 5px 10px;
   border: 1px solid #e1e1e1;
   border-radius: 5px;
 `;
+
 function _CardSidePic({
-  //props for function
+  //props
   img,
   alt,
   repoName,
@@ -80,7 +81,6 @@ function _CardSidePic({
   issuesNo,
   ownerName,
   timeInterval
-  //props for Styled-Component
 }) {
   return(
     <CardSidePic className="CardSidePic">

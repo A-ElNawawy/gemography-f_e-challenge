@@ -54,6 +54,7 @@ async function getData(me, date, pageNo, per_page) {
   await fetch(api)
   .then(response => response.json())
   .then(data => {
+    //Check if response has items & add them to items array
     if(data.items){
       if(me.state.items.length === 0){
         me.setState(
@@ -62,6 +63,7 @@ async function getData(me, date, pageNo, per_page) {
           })
         );
       }else{
+        //To Prevent duplication of data
         if(me.state.items[0].full_name !== data.items[0].full_name){
           me.setState(
             (state) =>({
@@ -70,6 +72,7 @@ async function getData(me, date, pageNo, per_page) {
           );
         }
       }
+    // if we have error
     }else if(data.message) {
       me.setState({message: data.message});
     }
@@ -77,6 +80,11 @@ async function getData(me, date, pageNo, per_page) {
   });
 }
 
+/*
+** loadMore Function to increment the pageNo App state and Fetch Data From github [ Accepts Parameters]
+** Parameters:
+** me = The ( This ) Keyword
+*/
 function loadMore(me) {
   me.setState((state) => ({
     pageNo: state.pageNo + 1
@@ -89,25 +97,39 @@ function loadMore(me) {
   );
 }
 
+/*
+** listenToScrolling Function is monitoring if user reach the end of repos list, if so, it calls loadMore Function but throw dampEvent Function [ Accepts Parameters]
+** Parameters:
+** me = The ( This ) Keyword
+*/
 function listenToScrolling(me) {
-  let windowInnerHeight = window.innerHeight;
-  let bodyHeight = document.body.clientHeight;
-  let scrolled = document.documentElement.scrollTop;
-  if (scrolled > bodyHeight - windowInnerHeight) {
-    if(me.state.message == "") {
+  let windowInnerHeight = window.innerHeight; // user screen hight
+  let bodyHeight = document.body.clientHeight; // the overall body hight ( increases with more repos loading )
+  let scrolled = document.documentElement.scrollTop; // how much user scrolled the document
+  if (scrolled > bodyHeight - windowInnerHeight) { // that means that user reached the end of page
+    if(me.state.message == "") { // if we have a message, that means we have error, so don't fetch data till user refresh the page
       dampEvent(me);
     }
   }
 }
 
+/*
+** dampEvent Function:
+** if we call loadMore function directly from listenToScrolling function, we will get a massive amount of fetches which will make  an error in server
+** so, just we get the event for one time, we want to lock the listener till the fetch ends
+** and this is the dampEvent function
+** [ Accepts Parameters]
+** Parameters:
+** me = The ( This ) Keyword
+*/
 function dampEvent(me) {
-  if(!me.lock){
-    me.lock = true;
+  if(!me.lock /* lock must be declared out of this function, and can't be a state */){
+    me.lock = true; // scrolling will not affect loadMore for one second
     setTimeout(function () {
       //===================================
       loadMore(me);
       //===================================
-      me.lock = false;
+      me.lock = false; // we can receive another event now
     }, 1000)
   }
 }

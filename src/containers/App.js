@@ -4,29 +4,28 @@ import Container from '../components/Container';
 import Message from '../components/Message';
 import {
   getDays,
-   getData,
-   getDateOf,
-   loadMore,
-   listenToScrolling
+  getData,
+  getDateOf,
+  loadMore,
+  listenToScrolling
   } from "../includes/functions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coding: false /*true*//*false*/,
+      coding: true, // just for testing
       loading: false,
-      data: {},
-      items: [],
-      message: "",
-      date: getDateOf(30),
-      pageNo: 1,
-      per_page: 5
+      items: [], // array of all repos we get from server
+      message: "", // error message we get from server
+      date: getDateOf(30), // number of days we want to go back to get repos
+      pageNo: 1, // page number we will send to github
+      per_page: 100 // number of repos we want per page
     };
   }
 
   componentDidMount() {
-    if(!this.state.coding){
+    if(!this.state.coding){ // just for testing
       getData(
         this,
         this.state.date,
@@ -37,13 +36,13 @@ class App extends React.Component {
     }
   }
 
-  lock = false;
+  lock = false; // this variable to be used in dampEvent function to prevent multi requests
   render(){
     let me = this;
-    if(!this.state.loading){
+    if(!this.state.loading){ // if we are loading data from server, don't listen to scrolling
       window.addEventListener("scroll", () => {listenToScrolling(me)});
     }
-    let list = [];
+    let list = []; // array that will contain all CardSidePic components
     let items = this.state.items;
     let message = this.state.message;
     if (items){

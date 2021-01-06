@@ -8,7 +8,6 @@ const Message = styled.h2`
   text-transform: capitalize;
   text-align: center;
   font-size: 30px;
-
   width: 95%;
   padding: 30px 0;
   margin: 0 20px;
