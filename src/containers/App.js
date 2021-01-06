@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coding: true, // just for testing
+      coding: false, // just for testing
       loading: false,
       items: [], // array of all repos we get from server
       message: "", // error message we get from server
