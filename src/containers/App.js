@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      coding: false, // just for testing
+      coding: true, // just for testing [set it to prevent fetching data]
       loading: false,
       items: [], // array of all repos we get from server
       message: "", // error message we get from server
@@ -42,6 +42,8 @@ class App extends React.Component {
     if(!this.state.loading){ // if we are loading data from server, don't listen to scrolling
       window.addEventListener("scroll", () => {listenToScrolling(me)});
     }
+
+    /* Creating a list of cards, each card represents a repo*/
     let list = []; // array that will contain all CardSidePic components
     let items = this.state.items;
     let message = this.state.message;
@@ -63,7 +65,20 @@ class App extends React.Component {
       }
     }
     return (
-      <div id="App" className="App">
+      <div className="App">
+        <main>
+          <Container>
+            <h1>Front-end Coding Challenge</h1>
+            <h2>Idea of the App</h2>
+            <p>
+              The task is to implement a small web app that will list the most starred Github repos that were created in the last 30 days.
+              We'll get data directly from the Github API.
+            </p>
+            <p>
+              In this app we used Reactjs, API, styled-components, create-react-app and gh-pages.
+            </p>
+          </Container>
+        </main>
         <Container>
           {list}
           {
