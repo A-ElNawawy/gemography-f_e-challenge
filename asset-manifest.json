@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/gemography-f_e-challenge/static/css/main.ed3afde2.chunk.css",
-    "main.js": "/gemography-f_e-challenge/static/js/main.1dc4fedb.chunk.js",
-    "main.js.map": "/gemography-f_e-challenge/static/js/main.1dc4fedb.chunk.js.map",
+    "main.js": "/gemography-f_e-challenge/static/js/main.b33374ae.chunk.js",
+    "main.js.map": "/gemography-f_e-challenge/static/js/main.b33374ae.chunk.js.map",
     "runtime-main.js": "/gemography-f_e-challenge/static/js/runtime-main.a5cd26f5.js",
     "runtime-main.js.map": "/gemography-f_e-challenge/static/js/runtime-main.a5cd26f5.js.map",
     "static/js/2.d6393808.chunk.js": "/gemography-f_e-challenge/static/js/2.d6393808.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.a5cd26f5.js",
     "static/js/2.d6393808.chunk.js",
     "static/css/main.ed3afde2.chunk.css",
-    "static/js/main.1dc4fedb.chunk.js"
+    "static/js/main.b33374ae.chunk.js"
   ]
 }
