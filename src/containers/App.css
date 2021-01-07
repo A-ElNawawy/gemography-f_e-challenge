@@ -1,0 +1,17 @@
+.App{
+  color: #444;
+  font-family: 'Lora', serif;
+}
+main h1 {
+  text-decoration: underline;
+  margin-bottom: 30px;
+  text-align: center;
+}
+main h2{
+  margin-bottom: 20px;
+}
+main p{
+  font-size: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import CardSidePic from '../components/CardSidePic';
 import Container from '../components/Container';
 import Message from '../components/Message';
@@ -69,7 +70,7 @@ class App extends React.Component {
         <main>
           <Container>
             <h1>Front-end Coding Challenge</h1>
-            <h2>Idea of the App</h2>
+            <h2>Idea of the App:</h2>
             <p>
               The task is to implement a small web app that will list the most starred Github repos that were created in the last 30 days.
               We'll get data directly from the Github API.
